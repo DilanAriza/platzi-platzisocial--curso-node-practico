@@ -3,18 +3,18 @@ const jwt = require('jsonwebtoken');
 
 //Modules
 const config = require('../config');
-const error = require('../utils/errors');
+const { err } = require('../utils/errors');
 
 
 const secret = config.jwt.secret;
 
 function sign(data) {
-    return jwt.sign(data, 'secret');
+    return jwt.sign(data, secret);
 }
 
 function verify(token) {
     try {
-        return jwt.verify(token, 'secret')
+        return jwt.verify(token, secret)
     } catch (error) {
         return new Error(error.message);
     }
@@ -25,7 +25,7 @@ const check = {
         const decoded = decodeHeader(req);
         console.log(decoded);
 
-        if (decoded.id !== owner) throw error('No tienes permisos para realizar esta acción', 401);
+        if (decoded.id !== owner) throw err('No tienes permisos para realizar esta acción', 401);
     },
 }
 

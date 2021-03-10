@@ -1,11 +1,15 @@
 //Modules
-const swaggerJsDoc = require('express-jsdoc-swagger')
 const swaggerUi = require('swagger-ui-express');
 const express = require('express');
+const dotenv = require('dotenv');
 const app = express();
+
+//ENV
+dotenv.config();
 
 //Errors
 const errors = require('../network/errors');
+const { logErrors, errorHandler } = require('../utils/errors')
 
 //Config
 const config = require('../config.js');
@@ -28,6 +32,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 //Errors middleware
 app.use(errors);
+app.use(logErrors);
+app.use(errorHandler)
 
 app.listen(config.api.port, () => {
     console.log(`Api listening in the port ${config.api.port}`);
