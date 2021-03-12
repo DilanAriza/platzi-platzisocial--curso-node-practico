@@ -23,15 +23,14 @@ module.exports = function(injectedStore) {
         const user = {
             id: data.id ? data.id : NanoID.nanoid(),
             name: data.name,
-            username: data.username,
-            password: data.password
+            username: data.username
         };
 
         if (data.password || data.username) {
             await auth.upsert({
                 id: user.id,
                 username: user.username,
-                password: user.password,
+                password: data.password,
             })
         }
 
