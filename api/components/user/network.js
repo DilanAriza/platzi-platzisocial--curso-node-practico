@@ -14,6 +14,9 @@ router.get('/', list);
 router.get('/:id', get);
 router.post('/', upsert);
 router.put('/', secure('update'), upsert);
+router.post('/follow/:id', secure('follow'), follow);
+router.post('/followers', secure('followers'), followers);
+
 
 
 //Functions
@@ -32,6 +35,18 @@ function get(req, res, next) {
 function upsert(req, res, next) {
     Controller.upsert(req.body)
         .then(user => response.success(req, res, user, 201))
+        .catch(next)
+}
+
+function follow(req, res, next) {
+    Controller.follow(req.user.id, req.params.id)
+        .then(data => response.success(req, res, data, 201))
+        .catch(next)
+}
+
+function followers(req, res, next) {
+    Controller.followers(req.user.id)
+        .then(data => response.success(req, res, data, 201))
         .catch(next)
 }
 

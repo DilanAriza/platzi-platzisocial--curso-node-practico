@@ -27,6 +27,9 @@ const check = {
 
         if (decoded.id !== owner) throw err('No tienes permisos para realizar esta acción', 401);
     },
+    logged: function(req, owner) {
+        const decoded = decodeHeader(req);
+    },
 }
 
 function getToken(auth) {

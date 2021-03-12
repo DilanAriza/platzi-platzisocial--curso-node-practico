@@ -10,6 +10,17 @@ module.exports = function chechAuth(action) {
                 next();
                 break;
 
+            case 'follow':
+                auth.check.logged(req)
+                next();
+                break;
+
+
+            case 'followers':
+                auth.check.logged(req)
+                next();
+                break;
+
             default:
                 next();
                 break;
