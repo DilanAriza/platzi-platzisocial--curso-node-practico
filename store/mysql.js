@@ -122,10 +122,26 @@ const upsert = async(table, data) => new Promise((resolve, reject) => {
     })
 })
 
+function remove(table, firstCondition, othersCondition = []) {
+    let andConditions = "";
+    if (othersCondition.length > 0) {
+        andConditions = othersCondition.map(c => "AND ?").join(" ");
+    }
+
+    return new Promise((resolve, reject) => {
+        connection.query(
+            `DELETE FROM ${table} WHERE ? ${andConditions}`, [firstCondition, ...othersCondition], (err, data) => {
+                if (err) return reject(err);
+                return resolve(data);
+            }
+        );
+    });
+}
 
 module.exports = {
     list,
     get,
     upsert,
-    query
+    query,
+    remove
 }
