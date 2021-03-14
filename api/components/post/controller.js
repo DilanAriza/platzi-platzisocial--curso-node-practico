@@ -33,7 +33,25 @@ module.exports = function(injectedStore) {
     }
 
     function remove(user, id) {
-        return store.remove(`${TABLE}`, { id: id }, [{ user: user }])
+        return store.remove(TABLE, { id: id }, [{ user: user }])
+    }
+
+    function like(post, user, id) {
+        const like = {
+            id: id ? id : NanoID.nanoid(),
+            post: post,
+            user: user
+        }
+
+        return store.upsert(`${TABLE}_like`, like);
+    }
+
+    function postLikers(post) {
+        return store.query(`${TABLE}_like`, { post: post }, false, true);
+    }
+
+    function unLiked(post, user) {
+        return store.remove(`${TABLE}_like`, { post: post }, [{ user: user }]);
     }
 
     return {
@@ -42,5 +60,8 @@ module.exports = function(injectedStore) {
         get,
         getByUser,
         remove,
+        like,
+        postLikers,
+        unLiked,
     }
 }

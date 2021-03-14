@@ -20,6 +20,21 @@ module.exports = function chechAuth(action) {
                 next();
                 break;
 
+            case 'like':
+                auth.check.logged(req)
+                next();
+                break;
+
+            case 'unLiked':
+                auth.check.logged(req)
+                next();
+                break;
+
+            case 'list':
+                auth.check.logged(req)
+                next();
+                break;
+
             default:
                 next();
                 break;
