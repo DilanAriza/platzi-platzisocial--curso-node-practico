@@ -83,16 +83,31 @@ function get(table, id) {
 //     })
 // }
 
-function query(table, query) {
+function query(table, query, join, multiple) {
+
+    let joinQuery = '';
+
+    if (join) {
+        const key = Object.keys(join)[0];
+        const val = join[key];
+        //Esta es una concatenación de la consulta principal con una nueva de la tabla de usuario
+        joinQuery = `JOIN ${key} ON ${table}.${val} = ${key}.id`;
+    }
+
     return new Promise((resolve, reject) => {
-        connection.query(`SELECT * FROM ${table} WHERE ?`, query, (err, result) => {
+        connection.query(`SELECT * FROM ${table} ${joinQuery} WHERE ${table}.?`, query, (err, result) => {
             if (err) return reject(err)
 
             let output;
+
             if (result.length > 0) {
-                output = {...result[0] };
+                if (multiple) {
+                    output = {...result };
+                } else {
+                    output = {...result[0] };
+                }
             } else {
-                output = result[0];
+                output = result;
             }
 
             resolve(output || null);
