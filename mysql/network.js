@@ -17,13 +17,12 @@ router.put('/:table', upsert);
 
 //Functions
 async function list(req, res, next) {
-    console.log(req.params.table)
     const data = await Store.list(req.params.table)
 
     response.success(req, res, data, 200);
 }
 async function get(req, res, next) {
-    const data = await Store.list(req.params.table, req.params.id)
+    const data = await Store.get(req.params.table, req.params.id)
 
     response.success(req, res, data, 200);
 }

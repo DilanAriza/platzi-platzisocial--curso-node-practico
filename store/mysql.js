@@ -57,32 +57,6 @@ function get(table, id) {
     })
 }
 
-// function insert(table, data) {
-//     console.log(data)
-//     console.log('insert')
-//     return new Promise((resolve, reject) => {
-//         connection.query(`INSERT INTO ${table} SET ?`, data, (err, result) => {
-//             if (err) {
-//                 return reject(err);
-//             }
-//             resolve(result);
-//         })
-//     })
-// }
-
-// function update(table, data) {
-//     console.log(data)
-//     console.log('update')
-//     return new Promise((resolve, reject) => {
-//         connection.query(`UPDATE ${table} SET ? WHERE id=?`, [data, data.id], (err, result) => {
-//             if (err) {
-//                 return reject(err);
-//             }
-//             resolve(result);
-//         })
-//     })
-// }
-
 function query(table, query, join, multiple) {
 
     let joinQuery = '';
