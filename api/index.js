@@ -16,7 +16,7 @@ const config = require('../config.js');
 
 //Networks
 const user = require('./components/user/network');
-const auth = require('./components/auth/network');
+// const auth = require('./components/auth/network');
 
 //Docs
 const swaggerDoc = require('./swagger.json');
@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //Routers
 app.use('/api/user', user);
-app.use('/api/auth', auth);
+// app.use('/api/auth', auth);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 //Errors middleware
