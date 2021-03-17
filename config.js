@@ -15,5 +15,9 @@ module.exports = {
     mysql_service: {
         port: process.env.MICROS_MYSQL_PORT || 3001,
         host: process.env.MICROS_MYSQL_HOST || 'localhost'
-    }
+    },
+    post_service: {
+        port: process.env.MICROS_POST_PORT || 3002,
+        host: process.env.MICROS_POST_HOST || 'localhost'
+    },
 }

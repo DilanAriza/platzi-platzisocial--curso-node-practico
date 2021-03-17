@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev-api": "nodemon api/index.js",
-        "dev-mysql": "nodemon mysql/index.js"
+        "dev-mysql": "nodemon mysql/index.js",
+        "dev-post": "nodemon post/index.js"
     },
     "repository": {
         "type": "git",

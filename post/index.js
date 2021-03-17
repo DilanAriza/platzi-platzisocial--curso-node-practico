@@ -1,5 +1,4 @@
 //Modules
-const swaggerUi = require('swagger-ui-express');
 const express = require('express');
 const dotenv = require('dotenv');
 const app = express();
@@ -15,26 +14,20 @@ const { logErrors, errorHandler } = require('../utils/errors')
 const config = require('../config.js');
 
 //Networks
-const user = require('./components/user/network');
-const auth = require('./components/auth/network');
-
-//Docs
-const swaggerDoc = require('./swagger.json');
+const post = require('./components/post/network');
 
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Routers
-app.use('/api/user', user);
-app.use('/api/auth', auth);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use('/api/post', post);
 
 //Errors middleware
 app.use(errors);
 app.use(logErrors);
 app.use(errorHandler)
 
-app.listen(config.api.port, () => {
-    console.log(`Api listening in the port ${config.api.port}`);
+app.listen(config.post_service.port, () => {
+    console.log(`Service of POST listening in the port ${config.post_service.port}`);
 })
