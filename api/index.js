@@ -11,6 +11,8 @@ dotenv.config();
 const errors = require('../network/errors');
 const { logErrors, errorHandler } = require('../utils/errors')
 
+console.log('nice')
+
 //Config
 const config = require('../config.js');
 
