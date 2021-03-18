@@ -46,6 +46,7 @@ function update(table, data) {
 module.exports = class createRemoteDB {
     constructor(host, port) {
         urlRemote = `http://${host}:${port}`;
+        console.log(host, port)
     }
 
     list(table) {

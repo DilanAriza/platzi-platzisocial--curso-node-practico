@@ -7,11 +7,11 @@ const app = express();
 dotenv.config();
 
 //Errors
-const errors = require('../network/errors');
-const { logErrors, errorHandler } = require('../utils/errors')
+const errors = require('../../network/errors');
+const { logErrors, errorHandler } = require('../../utils/errors')
 
 //Config
-const config = require('../config.js');
+const config = require('../../config.js');
 
 //Networks
 const post = require('./components/post/network');

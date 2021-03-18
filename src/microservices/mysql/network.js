@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 //Response & Controller
-const response = require('../network/response');
-const Store = require('../store/mysql');
+const response = require('../../network/response');
+const Store = require('../../store/mysql');
 
 router.use(express.json())
 

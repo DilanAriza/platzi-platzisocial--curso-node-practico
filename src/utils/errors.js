@@ -1,6 +1,6 @@
 const debug = require('debug')('api:error');
 const config = require('./../config');
-const response = require('./../network/response');
+const response = require('../network/response');
 
 function err(message, code) {
     let e = new Error(message);

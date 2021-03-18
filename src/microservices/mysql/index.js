@@ -7,7 +7,7 @@ const app = express();
 dotenv.config();
 
 //Config
-const config = require('../config');
+const config = require('../../config');
 
 //Router
 const router = require('./network');
