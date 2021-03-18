@@ -21,4 +21,8 @@ module.exports = {
         port: process.env.MICROS_POST_PORT || 3002,
         host: process.env.MICROS_POST_HOST || 'localhost'
     },
+    cache_service: {
+        port: process.env.MICROS_POST_PORT || 3003,
+        host: process.env.MICROS_POST_HOST || 'localhost'
+    }
 }

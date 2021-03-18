@@ -4,7 +4,11 @@
     "description": "The social network",
     "main": "src/api/index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev-api": "nodemon src/api/index.js",
+        "dev-micro-mysql": "nodemon src/microservices/mysql/index.js",
+        "dev-micro-post": "nodemon src/microservices/post/index.js",
+        "dev-micro-cache": "nodemon src/microservices/cache/index.js"
     },
     "repository": {
         "type": "git",
